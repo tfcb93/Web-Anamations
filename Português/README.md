@@ -87,8 +87,7 @@ Aqui faremos uma bolinha quicar no chão uma vez e cair de forma inelastica apó
     <animate attributeName="y" from="490" to="400" begin="2.001" dur="0.2s"/>
     <animate attributeName="y" from="400" to="490" begin="2.201s" dur="0.2s"  fill="freeze"/>
 
-    <animateTransform attributeName="transform" type="rotate" from="0 55 55" to="180 55 495" begin="1s" dur="1s" /> 
-    <!--lembre-se que para rotacionar algo enquanto usa animate, tente lembrar dos pontos inicial e final da animação, para que ele possa rotacionar em seu eixo-->
+    <animateTransform attributeName="transform" type="rotate" from="0 55 55" to="180 55 495" begin="1s" dur="1s" />
     <animateTransform attributeName="transform" type="rotate" from="180 55 495" to="270 55 400" begin="2.001s" dur="0.2s" />
     <animateTransform attributeName="transform" type="rotate" from="0 55 400" to="180 55 495" begin="2.201s" dur="0.2s" />
   </rect>
