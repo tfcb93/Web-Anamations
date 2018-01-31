@@ -51,17 +51,69 @@ Aqui vamos mostrar do jeito tradicional. Como fazer com código as animações. 
 O método será: Uma apresentação inicial sobre o que é cada uma das APIs, ferramentas e etc. Depois indo passo a passo fazendo uma animação usando as tags apresentadas. No fim postarei algumas páginas com documentação, referências e sites interessantes com tutoriais e outros conteúdos.  
 Quis adotar a ordem HTML, CSS e JS pois é assim que geralmente é feito o aprendizado sobre Web. Então resolvi colocar dessa mesma forma. Esse método também é bom para aqueles que já sabem um ou outro tópico e querem pular direto para alguma outra parte.
 Outra coisa, esse tutorial não é nem um pouco formal, mas eu tento usar o português o melhor possível, além disso, sujestões podem ser enviadas abrindo uma issue no github.  
+Você é bem-vindo em escolher o editor online (ou fazer em sua própria máquina) a sua escolha. Os exemplos estarão disponíveis no codepen assim como na pasta de exemplos desse curso.
 Sem mais delongas, vamos ao que interessa. APRENDER! :D
 
 <h1 id="HTML">Animações em HTML puro</h1>
 
-Animações em HTML puro pode ser atingida de uma forma. Por meio de SVG e tags de animação. Controlando a forma, movimentos, cor e outras propriedades do SVG por meio das tags fornecidas por meio da SMIL (Synchronized Multimedia Integration Language).
+Animações em HTML puro pode ser feitas de uma forma. Por meio de SVG e tags de animação. Controlando a forma, movimentos, cor e outras propriedades do SVG por meio das tags fornecidas por meio da SMIL (Synchronized Multimedia Integration Language).  
+Vale dizer que os browsers da Microsoft e Opera não aceitam as tags SMIL. Portanto, se seu projeto tem foco em Microsoft Edge, Internet Explorer ou Opera, não use esse método.
 
 ## SVG  
 ### O que é SVG?
-SVG (Scalable Vector Graphics) é um padrão criado pela W3C para a definição de imagens vetoriais usadas em páginas web. A sintaxe do SVG é muito semelhante ao do XML, além de trabalhar com componentes vetoriais como as curvas bezier e splines. Algumas das principais qualidades para o uso de imagens vetoriais na web é de serem muito leves e de serem facilmente escaláveis, ou seja, a imagem não perde a qualidade se for redimencionada, o que é ótimo para aplicações responsivas.
+SVG (Scalable Vector Graphics) é um padrão criado pela W3C para a definição de imagens vetoriais usadas em páginas web. A sintaxe do SVG é muito semelhante ao do XML, além de trabalhar com componentes vetoriais como as curvas bezier e splines. Algumas das principais qualidades para o uso de imagens vetoriais na web é de serem muito leves e de serem facilmente escaláveis, ou seja, a imagem não perde a qualidade se for redimencionada, o que é ótimo para aplicações responsivas.  
+Como o exemplo a seguir, essa é uma imagem estática feita em SVG em um programa de edição de imagem.  
+    > botar imagem SVG aqui  
+Essa imagem é na verdade um documento de tags assim como o XML e HTML  
+    > botar código da imagem  
+E com tags parecidas com as acima podemos animar elementos dentro de nossas imagens.  
+Veremos agora com alguns exemplos de como animar essas imagens. Agora, se não está familirizado com tags SVG, recomendo fazer uma pausa nesse texto e ir entender um pouco, talvez criar algumas imagens por código ou até brincar com algum aplicativo de imagens vetoriais como o [Inkskape](https://inkscape.org/).  Eu devo explicar algum dos elementos aqui, mas de forma bem rasa para dar mais foco em como animar em si.
+
 
 ### Animações SVG
+#### parte 1
+Nessa parte vamos falar de 2 tags de animação: <b>```<animate>```</b> e <b>```<animateTransform>```</b>  
+```<animate>```como o nome já diz é uma tag que anima algum elemento. No caso, essa tag irá animar um determinado atributo, indo de um valor para o outro em determinado periodo de tempo.  
+```<animateTransform>``` efetua uma transformação, como uma rotação, translação, escala e assim vai.
+Essas tags serão incluidas dentro de nossos elementos para indicar que esses lementos possuem tal propriedade de serem animadas naquele momento.
+Aqui faremos uma bolinha quicar no chão uma vez e cair de forma inelastica após isso.  
+*Não ligue (tanto) para o fato da animação não estar tão perfeita. Estou fazendo isso mais para mostrar as tags, como elas funcionam e como usalas.*
+```
+<svg version="2.0" xmlns:"http://www.w3c.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+
+  <rect id="block" x="50" y="50" width="10" height="10">
+
+    <animate attributeName="y" from="50" to="500" begin="1s" dur="1s" fill="freeze"/>
+    <animate attributeName="y" from="490" to="400" begin="2.001" dur="0.2s"/>
+    <animate attributeName="y" from="400" to="490" begin="2.201s" dur="0.2s"  fill="freeze"/>
+
+    <animateTransform attributeName="transform" type="rotate" from="0 55 55" to="180 55 495" begin="1s" dur="1s" /> 
+    <!--lembre-se que para rotacionar algo enquanto usa animate, tente lembrar dos pontos inicial e final da animação, para que ele possa rotacionar em seu eixo-->
+    <animateTransform attributeName="transform" type="rotate" from="180 55 495" to="270 55 400" begin="2.001s" dur="0.2s" />
+    <animateTransform attributeName="transform" type="rotate" from="0 55 400" to="180 55 495" begin="2.201s" dur="0.2s" />
+  </rect>
+</svg>
+```
+>Inserir link para o primeiro exemplo aqui  
+``viewBox`` modula as proporções do documento pelos valores fornecidos, possibilitando o sistema de coordenadas caber em janelas de tamanhos diferentes. São definidos os tamanhos mínimos de x e y assim como o comprimento e a largura do viewBox. Para entender melhor [leia sobre no MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox).  
+``attributeName`` é o atributo que será alterado pelo tag, no caso de ``animateTransform`` o valor dessa tag será ``transform`` e será definido o tipo da transformação pelo atributo ``type``.  
+``from`` e ``to`` os valores inicial e final da animação respectivamente. O valor podem ser de uma posição, cor, ângulo, etc.  
+``begin`` e ``dur`` determina quando começar e quanto dura a animação. No caso de begin não ser declarado a animação por padrão começa em 0 segundos. Você pode definir ambos em segundos, minutos, milisegundos e mais. Para mais definições sobre tempo, veja a sintaxe de [tempos](https://svgwg.org/specs/animations/#ClockValueSyntax).  
+``type``: Define para ``<animateTransform>`` o tipo de transformação a ser executada. No nosso caso foi o ``rotate``, mas outras estão disponíveis como ``translate``, ``rotate``, ``skewX`` e ``skewY``.  
+``transform="rotate"`` tem algumas peculiaridades interessantes. Pois assim como você pode rotacionar diretamente colocar somente o ângulo (primeiro argumento) em ``from`` e ``to``, você pode incluir o centro de rotação daquele objeto (segundo e terceiro argumentos, ``x`` e ``y`` respectivamente). Caso não seja incluido o centro de rotação, será tomado como centro o a coordenada 0,0 do documento (o canto superior esquerdo).  
+``fill="freeze"`` faz com que ao final da animação o objeto permaneça na posição final declarada.
+#### parte 2
+#### parte 3
+#### vá além
+Há muitas outras tags para animar um conteúdo em SMIL. Tags como ``<set>``,``<def>`` e ``<use>`` além de muitas outras são fornecidas para criar animações web e podem ser muito uteis em algum projeto. Você pode encontrar mais coisa sobre SVG e animações em SVG nos seguintes links  
+- [A Compendium of SVG Information](https://css-tricks.com/mega-list-svg-information/)
+- [SVG2 - W3C](https://www.w3.org/TR/SVG2/)
+- [SVG Animation Level 2 - W3C(Draft)](https://svgwg.org/specs/animations/)
+- [Registro de elementos(vão ter algumas coisa traduzidas para o português)](https://developer.mozilla.org/pt-BR/docs/Web/SVG/Element)
+- [Structing, grouping, and referencing in SVG](https://www.sarasoueidan.com/blog/structuring-grouping-referencing-in-svg/) - Sara Soueidan tem muita coisa sobre SVG e vale a pena conferir
+- [SVG can do that?! - Vídeo](https://www.youtube.com/watch?v=ADXX4fmWHbo) - Sarah Drasner, outra pessoa que tem muita coisa com SVG para conferir
+- Qualuqer coisa além disso, pesquise no Google. Tem muita coisa interessante que você pode achar, até porque SVG é um assunto bem profundo e vasto.  
+
 
 <h1 id="css">Animações em CSS "puro"</h1>
 
