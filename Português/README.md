@@ -78,7 +78,7 @@ Nessa parte vamos falar de 2 tags de animação: <b>```<animate>```</b> e <b>```
 Essas tags serão incluidas dentro de nossos elementos para indicar que esses lementos possuem tal propriedade de serem animadas naquele momento.
 Aqui faremos uma bolinha quicar no chão uma vez e cair de forma inelastica após isso.  
 *Não ligue (tanto) para o fato da animação não estar tão perfeita. Estou fazendo isso mais para mostrar as tags, como elas funcionam e como usalas.*
-```
+```HTML
 <svg version="2.0" xmlns:"http://www.w3c.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
 
   <rect id="block" x="50" y="50" width="10" height="10">
@@ -102,6 +102,22 @@ Aqui faremos uma bolinha quicar no chão uma vez e cair de forma inelastica apó
 ``transform="rotate"`` tem algumas peculiaridades interessantes. Pois assim como você pode rotacionar diretamente colocar somente o ângulo (primeiro argumento) em ``from`` e ``to``, você pode incluir o centro de rotação daquele objeto (segundo e terceiro argumentos, ``x`` e ``y`` respectivamente). Caso não seja incluido o centro de rotação, será tomado como centro o a coordenada 0,0 do documento (o canto superior esquerdo).  
 ``fill="freeze"`` faz com que ao final da animação o objeto permaneça na posição final declarada.
 #### parte 2
+```HTML
+<svg version="2.0" xmlns="http://www.w3c.org/2000/svg" width="700" height="700" viewBox="-100 -100 700 700">
+  <path id="around" d="M10 250 A200 200 0 0 0 490 250 A200 200 0 0 0 10 250" fill="none" stroke="black"/>
+  <circle id="earth" cx="" cy="" r="50" fill="blue"/>
+  <circle cx="250" cy="250" r="100" fill="yellow"/>
+  <animateMotion href="#earth" begin="0s" dur="10s" repeatCount="indefinite">
+      <mpath href="#around"/>
+  </animateMotion>
+</svg>
+```
+Nesse exemplo é abordado o ``<animateMotion>``, aonde podemos associar um caminho para movimento de um objeto SVG. Nesse caso montamos um caminho com o comando ``path``, incluimos um id a ele (desculpe, sou ruim com nomes de id) e anexamos ao tag ``mpath`` por meio de um link ``href`` (se já usou HTML antes sabe aonde já viu isso). Assim a tag associa o caminho montado previamente para o movimento. Também mantive o valor de ``stroke`` para que fosse possível enxergar o nosso caminho.  
+Note que nosso circulo com a ``ìd="earth"`` não tem os valores definidos para ``cx`` e ``cy``. Isso por que nossa tag de ``<animateMotion>`` vai definir esses valores para gente enquanto executa. Se definir os valores eles serão somados ao path e sua animação será deslocada.  
+``repeatCount`` permite definir um valor para quantas vezes a animação será repetida. Use o valor ``indefinite`` para que a animação atue infinitamente.  
+E para finalizar, note que as tags de animação não estão dentro das tags dos objetos. Isso para mostrar que é possível conectar as animações por meios de ``id``s e links ``href``. E não se esqueçam de usar ``#`` ao usar um link ``href``.  
+Dessa vez alterei o ``viewBox`` para enquadrar melhor a tela do SVG e assim os circulos não serem "comidos" ao passar pelas bordas.  
+Para esse exemplo eu somente usei ``path`` para criar dois arcos e formar uma circunferência. Saiba que há outros parametros para fazer curvas bem mais complexas dentro do path, como curvas de bezier. Dê uma olhada em [paths](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) pela MDN.  
 #### parte 3
 #### vá além
 Há muitas outras tags para animar um conteúdo em SMIL. Tags como ``<set>``,``<def>`` e ``<use>`` além de muitas outras são fornecidas para criar animações web e podem ser muito uteis em algum projeto. Você pode encontrar mais coisa sobre SVG e animações em SVG nos seguintes links  
@@ -113,11 +129,28 @@ Há muitas outras tags para animar um conteúdo em SMIL. Tags como ``<set>``,``<
 - [SVG can do that?! - Vídeo](https://www.youtube.com/watch?v=ADXX4fmWHbo) - Sarah Drasner, outra pessoa que tem muita coisa com SVG para conferir
 - Qualuqer coisa além disso, pesquise no Google. Tem muita coisa interessante que você pode achar, até porque SVG é um assunto bem profundo e vasto.  
 
+## conclusão
+SVG é bem poderoso. Se continuar pesquisando vai ver que é um assunto bem vasto e extendido para muitas outras áreas, e tudo pode ser feito usando poucas tags. Mas também pode ser um pouco difícil de controlar, especialmente se manipular os valores diretamente sem ajuda de programas ou outras ferramentas.  
+Veremos mais para frente que com outros recursos poderemos montar animações em SVG mais poderosas e mais facilmente manipuláveis. Assim como para essas ferramentas mostrar que SVG também é algo muito bem aproveitável para elas.
 
 <h1 id="css">Animações em CSS "puro"</h1>
 
 ### O que é CSS?
 CSS (Cascade Style Sheets) são, traduzindo ao pé da letra, folhas de estilo em cascata. O que elas fazem? Coisas bonitas. Elas fazem o "estilo" das páginas em HTML. Geralmente a ordem é: HTML é usado para estruturar a [DOM](https://www.w3.org/DOM/). CSS é usado para incluir cor, tipos, [box model](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Box_model) e outras coisas.
+
+### Animações com CSS
+Animações com CSS são bem fáceis de fazer e muito ricas em funcionalidades. Tudo isso graças a uma poderosa função (sim função) chamada ```@keyframes```. Ela permite que criemos, por meio de porcentegem ou ([outros termos](https://developer.mozilla.org/pt-BR/docs/Web/CSS/@keyframes#Syntax)) mudanças nas propriedades de um elemento da DOM. Basta criar o ``@keyframes`` com suas funcionalidades e aplicar em algum elemento declarando o nome dado a animação por meio de ``animation-name`` ou por meio de ``animation`` definindo também o tempo. Claro, há outros atributos para esta ultima tag, definindo delay, tempo de iteração, função de *timing* e muito mais.  
+Além disso, oferece uma camada maior de interatividade, já que o próprio CSS permite reconhecer operações do mouse. Também temos funcionalidades 3D dentro do CSS3 que possibilitam animações ricas e estilos muito bonitos para páginas web.
+<!--seria bom eu falar de -webkit- -moz- e -o- aqui acredito -->
+#### parte 1
+<!--algo mostrando boa parte das funcionalidades e tag names-->
+#### parte 2
+<!--fazer algo mais complexo, usando ainda curvas de timing e efeitos interessantes-->
+#### parte 3
+<!--Mostrar algo em CSS 3D seria legal-->
+#### va além
+
+### conclusão
 
 <h1 id="cssplussvg">CSS + SVG</h1>
 
@@ -143,6 +176,7 @@ E essa mesma linguagem é muito poderosa e pode fazer coisas que CSS ou SMIL faz
 - #### vivid.js ??
 - #### moJS
 - #### anime  
+- #### two  
     Eu tenho que incluir essa. Só pelo nome. Heh. Apesar de fazer coisas muito legais também.
 - #### E muito mais  
     Acredite, já devem ter outras bibliotecas que nasceram até a publicação desse texto. Além das outras que já existem e eu não listei aqui.
