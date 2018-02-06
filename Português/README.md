@@ -90,7 +90,7 @@ Aqui faremos uma bolinha quicar no chão uma vez e cair de forma inelastica apó
   </rect>
 </svg>
 ```
->Inserir link para o primeiro exemplo aqui  
+
 ``viewBox`` modula as proporções do documento pelos valores fornecidos, possibilitando o sistema de coordenadas caber em janelas de tamanhos diferentes. São definidos os tamanhos mínimos de x e y assim como o comprimento e a largura do viewBox. Para entender melhor [leia sobre no MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox).  
 ``attributeName`` é o atributo que será alterado pelo tag, no caso de ``animateTransform`` o valor dessa tag será ``transform`` e será definido o tipo da transformação pelo atributo ``type``.  
 ``from`` e ``to`` os valores inicial e final da animação respectivamente. O valor podem ser de uma posição, cor, ângulo, etc.  
@@ -98,6 +98,7 @@ Aqui faremos uma bolinha quicar no chão uma vez e cair de forma inelastica apó
 ``type``: Define para ``<animateTransform>`` o tipo de transformação a ser executada. No nosso caso foi o ``rotate``, mas outras estão disponíveis como ``translate``, ``rotate``, ``skewX`` e ``skewY``.  
 ``transform="rotate"`` tem algumas peculiaridades interessantes. Pois assim como você pode rotacionar diretamente colocar somente o ângulo (primeiro argumento) em ``from`` e ``to``, você pode incluir o centro de rotação daquele objeto (segundo e terceiro argumentos, ``x`` e ``y`` respectivamente). Caso não seja incluido o centro de rotação, será tomado como centro o a coordenada 0,0 do documento (o canto superior esquerdo).  
 ``fill="freeze"`` faz com que ao final da animação o objeto permaneça na posição final declarada.
+
 #### parte 2
 ```HTML
 <svg version="2.0" xmlns="http://www.w3c.org/2000/svg" width="700" height="700" viewBox="-100 -100 700 700">
