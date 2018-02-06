@@ -2,13 +2,10 @@
 ## Conteúdo
 0. [Introdução](#intro)  
     - Animações no nosso dia a dia
-    - Na Web: A experiência que elas nos oferece
-    - Métodos e formas
     - Sobre este tutorial
 1. [Animações em HTML puro](#HTML)  
-    - SVG  
-        - O que é SVG  
-        - Animações SVG  
+    - O que é SVG  
+    - Animações SVG  
 2. [Animações em CSS "puro"](#CSS)
     - Sobre CSS  
     - Animações CSS  
@@ -143,9 +140,14 @@ Animações com CSS são bem fáceis de fazer e muito ricas em funcionalidades. 
 Além disso, oferece uma camada maior de interatividade, já que o próprio CSS permite reconhecer operações do mouse. Também temos funcionalidades 3D dentro do CSS3 que possibilitam animações ricas e estilos muito bonitos para páginas web.
 <!--seria bom eu falar de -webkit- -moz- e -o- aqui acredito -->
 #### parte 1
+Para a parte um vamos montar uma tela de loading aonde elementos "saltam" na tela. Com isso veremos alguns dos elementos de animação em CSS.
 <!--algo mostrando boa parte das funcionalidades e tag names-->
 #### parte 2
+Vamos nesse tutorial fazer um botão. Quando pressionado o botão  
 <!--fazer algo mais complexo, usando ainda curvas de timing e efeitos interessantes-->
+#### Ease e elementos animaveis
+Nem tudo pode ser animado em CSS, somente parte dos elementos podem. [Nessa lista](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties) você pode ver quais elementos podem ser animados pelos ``@keyframes`` do CSS.  
+Para certas animações iremos querer movimentos mais complexos, como um começo e encerramento mais lentos e o meio mais rápido. Para isso podemos usar funções de timing mais complexas como curvas de bezier, controlando de forma mais complexa o tempo e podemos criar efeitos mais ricos em nossas animações.
 #### parte 3
 <!--Mostrar algo em CSS 3D seria legal-->
 #### va além
@@ -167,14 +169,19 @@ E essa mesma linguagem é muito poderosa e pode fazer coisas que CSS ou SMIL faz
 ### Canvas
 
 ### Web Animation API
+Uma API nativa dos browsers para comportar animações como as animações CSS, porém com as facilidades de usar javascript. Por enquanto a API não está implementada na maioria dos browsers, e nos poucos que estão, não são 100% de suas funções que estão implementadas. Porém aguarde que esta poderá ser uma forte API para criar animações web, e o melhor de tudo é que elas poderão ser feitas out-of-the-box, sem precisar importar nenhuma outra biblioteca. O que podemos dizer sobre ela é:  
+- pegue o elemento que deseja e aplique ``animate()``. Esta função recebe uma lista de objetos e um valor como parametros. O primeiro parametro é a lista de obejtos que serão animados e seus respectivos valores. Os objetos são como os nomes dados nas propriedades do CSS. O segundo parametro é o valor do tempo em milisegundos para o evento desejado.
+- Um dos benefícios de se trabalhar com Web Animations API é a simplicidade de manipular valores e trabalhar com JavaScript para manipular e interagir com os objetos a serem animados.
+- ``getAnimations()`` retorna uma lista com todas as animações de um objeto, incluindo as animações CSS. Permitindo também manipular as animações mesmo que definidas pelas folhas de estilo.
+- Uma boa lida sobre o assunto pode ser feita no CSS-trick em: [CSS Animations VS. Web Animations](https://css-tricks.com/css-animations-vs-web-animations-api/).
 
 ### Bibliotecas
 - #### velocity  
 - #### greensock  
-- #### snap  
+- #### react-motion
+    - React-motion é uma API para utilizar a elegância da componentização do React. Ele é muito bom para criar animação em cima de componentes de interface com o usuário. Por outro lado pode ser um pouco difícil de entender e com poucos tutoriais a disposição.
 - #### svgJS   
-- #### vivid.js ??
-- #### moJS
+- #### moJS  
 - #### anime  
 - #### two  
     Eu tenho que incluir essa. Só pelo nome. Heh. Apesar de fazer coisas muito legais também.
