@@ -60,7 +60,7 @@ Vale dizer que os browsers da Microsoft e Opera não aceitam as tags SMIL. Porta
 ### O que é SVG?
 SVG (Scalable Vector Graphics) é um padrão criado pela W3C para a definição de imagens vetoriais usadas em páginas web. A sintaxe do SVG é muito semelhante ao do XML, além de trabalhar com componentes vetoriais como as curvas bezier e splines. Algumas das principais qualidades para o uso de imagens vetoriais na web é de serem muito leves e de serem facilmente escaláveis, ou seja, a imagem não perde a qualidade se for redimencionada, o que é ótimo para aplicações responsivas.  
 Como o exemplo a seguir, essa é uma imagem estática feita em SVG em um programa de edição de imagem.   
-![Imagem SVG](/Imagens/hearts.svg)  
+<img src="../Imagens/hearts.svg" width="250px"/>  
 Essa imagem é na verdade um documento de tags assim como o XML e HTML  
 ```HTML
 <svg id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 137.07 115.59">
