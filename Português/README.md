@@ -102,7 +102,6 @@ Aqui faremos um retângulo quicar no chão uma vez e cair de forma inelastica ap
 </svg>
 ```
 <p data-height="265" data-theme-id="0" data-slug-hash="wyBWvP" data-default-tab="html,result" data-user="thiagoborges533" data-embed-version="2" data-pen-title="Tutorial SVG 1" class="codepen">See the Pen <a href="https://codepen.io/thiagoborges533/pen/wyBWvP/">Tutorial SVG 1</a> by Thiago Borges (<a href="https://codepen.io/thiagoborges533">@thiagoborges533</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 Apresentando algumas tags. ``viewBox`` modula as proporções do documento pelos valores fornecidos, possibilitando o sistema de coordenadas caber em janelas de tamanhos diferentes. São definidos os tamanhos mínimos de x e y assim como o comprimento e a largura do viewBox. Para entender melhor [leia sobre no MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox).  
 ``attributeName`` é o atributo que será alterado pelo tag, no caso de ``animateTransform`` o valor dessa tag será ``transform`` e será definido o tipo da transformação pelo atributo ``type``.  
@@ -125,7 +124,6 @@ Ah sim, e se a animação não for associada à alguma ``id`` ou não for encaps
 </svg>
 ```
 <p data-height="265" data-theme-id="0" data-slug-hash="rJMKzE" data-default-tab="html,result" data-user="thiagoborges533" data-embed-version="2" data-pen-title="Tutorial SVG 2" class="codepen">See the Pen <a href="https://codepen.io/thiagoborges533/pen/rJMKzE/">Tutorial SVG 2</a> by Thiago Borges (<a href="https://codepen.io/thiagoborges533">@thiagoborges533</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 Nesse exemplo é abordado o ``<animateMotion>``, aonde podemos associar um caminho para movimento de um objeto SVG. Nesse caso montamos um caminho com o comando ``path``, incluimos um id a ele (desculpe, sou ruim com nomes de id) e anexamos ao tag ``mpath`` por meio de um link ``href`` (se já usou HTML antes sabe aonde já viu isso). Assim a tag associa o caminho montado previamente para o movimento. Também foi mantido o valor de ``stroke`` para que fosse possível enxergar o nosso caminho.  
 Note que nosso circulo com a ``ìd="earth"`` não tem os valores definidos para ``cx`` e ``cy``. Isso por que nossa tag de ``<animateMotion>`` vai definir esses valores para gente enquanto executa. Se definir os valores eles serão somados ao path e sua animação será deslocada.  
@@ -149,7 +147,6 @@ Para esse exemplo eu somente usei ``path`` para criar dois arcos e formar uma ci
 </svg>
 ```
 <p data-height="265" data-theme-id="0" data-slug-hash="xYEzXG" data-default-tab="html,result" data-user="thiagoborges533" data-embed-version="2" data-pen-title="Tutorial SVG 3" class="codepen">See the Pen <a href="https://codepen.io/thiagoborges533/pen/xYEzXG/">Tutorial SVG 3</a> by Thiago Borges (<a href="https://codepen.io/thiagoborges533">@thiagoborges533</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 
 Aqui temos nossa última animação. Nela a gente mostra algumas tags já apresentadas, mas outras um tanto novas.  
