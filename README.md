@@ -1,4 +1,4 @@
-# Web Anamations
+# Web Animations
 
 - [Português](#pt-BR)  
 - [English](#en-US)  
